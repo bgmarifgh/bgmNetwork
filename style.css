@@ -82,3 +82,60 @@ img,svg,video,canvas{max-width:100%;height:auto}
   .hero h1{font-size:clamp(88px,8vw,112px)}
   .section{padding-top:124px;padding-bottom:124px}
 }
+
+/* v2: enforce full-viewport responsive sizing */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  min-width: 320px;
+  margin: 0;
+}
+body { overflow-x: clip; }
+main, header, footer, section { max-width: 100%; }
+.wrap {
+  display: block;
+  width: calc(100% - 48px);
+  max-width: var(--max);
+  margin-left: auto;
+  margin-right: auto;
+}
+.nav.wrap { display: flex; }
+.hero.wrap, .section.wrap, .faq.wrap { width: calc(100% - 48px); }
+.dashboard { width: 100%; min-width: 0; }
+.dash-top, .dash-bottom, .dash-body { min-width: 0; }
+.hero h1, .section-heading, .principles-inner, .principle-list,
+.contact, .faq, .footer-inner { min-width: 0; }
+
+@media (max-width: 700px) {
+  .wrap,
+  .hero.wrap,
+  .section.wrap,
+  .faq.wrap {
+    width: calc(100% - 32px);
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .nav.wrap { width: calc(100% - 32px); }
+  .hero { width: 100%; }
+  .hero h1 { font-size: clamp(42px, 12vw, 68px); letter-spacing: -2.8px; }
+  .dashboard { width: 100%; max-width: 100%; }
+  .dash-top { flex-wrap: wrap; }
+  .dash-title { flex: 1 1 auto; }
+  .dash-bottom { width: 100%; }
+  .control-track { flex: 1 1 auto; }
+  .section-heading h2,
+  .principles h2,
+  .contact h2 { overflow-wrap: anywhere; }
+}
+
+@media (min-width: 701px) {
+  .wrap,
+  .hero.wrap,
+  .section.wrap,
+  .faq.wrap {
+    width: min(var(--max), calc(100% - 64px));
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
